@@ -3,7 +3,7 @@
 
 > **Course:** Cloud Development and Operations  
 > **Assignment:** Serverless Service Alternatives Report  
-> **Format:** GitHub-ready technical documentation  
+> **Name:** Sandra rochelle nyabeng mineme 
 
 ---
 
@@ -458,5 +458,4 @@ For a new serverless project, provider selection should be driven by existing ec
 
 ---
 
-*Report prepared for Cloud Development and Operations — Algonquin College*  
 *All pricing reflects public list prices as of 2025 and is subject to change. Refer to each provider's official pricing page for current rates.*
