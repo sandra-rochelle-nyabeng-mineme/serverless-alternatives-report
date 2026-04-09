@@ -115,7 +115,7 @@ Azure Functions stands out for its **binding system** — the ability to declara
 |---|---|---|---|
 | **Provider** | Microsoft Azure | Amazon Web Services | Google Cloud Platform |
 | **Description** | Extension of Azure Functions enabling stateful workflows in serverless code using the virtual actor model | Managed workflow orchestration using JSON/YAML state machines (Amazon States Language) | Fully managed workflow orchestration service using YAML-based syntax |
-| **Programming Model** | Code-first (C#, JavaScript, Python, Java, PowerShell) | Configuration-first (ASL — Amazon States Language) | YAML-based syntax with expressions |
+| **Programming Model** | Code-first (C#, JavaScript, Python, Java, PowerShell) | Configuration-first (ASL: Amazon States Language) | YAML-based syntax with expressions |
 
 ### Core Features
 
@@ -144,7 +144,7 @@ Azure Functions stands out for its **binding system** — the ability to declara
 | | Durable Functions | AWS Step Functions | GCP Workflows |
 |---|---|---|---|
 | **Visual Designer** | No built-in visual designer | AWS Step Functions Visual Editor | Workflow graph in Cloud Console |
-| **Execution Tracking** | Durable Functions Monitor (OSS tool), Application Insights | Step Functions console — full execution history | Cloud Console execution log |
+| **Execution Tracking** | Durable Functions Monitor (OSS tool), Application Insights | Step Functions console ; full execution history | Cloud Console execution log |
 | **Logging** | App Insights, Azure Monitor | CloudWatch Logs | Cloud Logging |
 | **Tracing** | Application Insights (distributed) | X-Ray integration | Cloud Trace |
 
@@ -159,7 +159,7 @@ Azure Functions stands out for its **binding system** — the ability to declara
 
 ### Narrative Analysis
 
-**Durable Functions** takes a code-first approach that many developers find natural — orchestrations are written as regular async code with `yield`/`await`, hiding the complexity of checkpointing and replay. This is ideal for teams comfortable with programming languages who prefer not to learn a new DSL. The trade-off is limited visual tooling and the need to understand the replay execution model carefully to avoid side effects in orchestrators.
+**Durable Functions** takes a code-first approach that many developers find natural; orchestrations are written as regular async code with `yield`/`await`, hiding the complexity of checkpointing and replay. This is ideal for teams comfortable with programming languages who prefer not to learn a new DSL. The trade-off is limited visual tooling and the need to understand the replay execution model carefully to avoid side effects in orchestrators.
 
 **AWS Step Functions** is configuration-first using Amazon States Language (JSON/YAML). This makes workflows inspectable, version-controllable, and auditable without reading code. The visual designer is a major advantage for non-developer stakeholders. Step Functions Standard has a 1-year limit and full history; Express Workflows are optimized for high-volume, short-duration flows at a lower cost. The 200+ direct SDK integrations (calling DynamoDB, SQS, ECS, etc. directly from state definitions without Lambda) is a significant differentiation.
 
@@ -220,9 +220,9 @@ Azure Functions stands out for its **binding system** — the ability to declara
 
 ### Narrative Analysis
 
-**Azure Logic Apps** is the most complete iPaaS (Integration Platform as a Service) offering among the three. Its 400+ connectors and no-code visual designer make it accessible to non-developers, and its B2B/EDI support (AS2, X12, EDIFACT) is unmatched. For enterprise integration scenarios — especially those involving Microsoft products — Logic Apps has no peer. The consumption pricing model can become expensive at scale since every connector action is billed.
+**Azure Logic Apps** is the most complete iPaaS (Integration Platform as a Service) offering among the three. Its 400+ connectors and no-code visual designer make it accessible to non-developers, and its B2B/EDI support (AS2, X12, EDIFACT) is unmatched. For enterprise integration scenarios, especially those involving Microsoft products, Logic Apps has no peer. The consumption pricing model can become expensive at scale since every connector action is billed.
 
-**AWS EventBridge Pipes** is a narrower service focused on point-to-point event routing with filtering and enrichment. It doesn't aspire to be a full Logic Apps replacement — it's better understood as a complement to Step Functions and Lambda for event-driven architectures. It lacks a visual designer and has fewer native connectors, but it integrates tightly into the AWS ecosystem.
+**AWS EventBridge Pipes** is a narrower service focused on point-to-point event routing with filtering and enrichment. It doesn't aspire to be a full Logic Apps replacement; it's better understood as a complement to Step Functions and Lambda for event-driven architectures. It lacks a visual designer and has fewer native connectors, but it integrates tightly into the AWS ecosystem.
 
 **GCP's combination** of Workflows + Eventarc approximates Logic Apps functionality for GCP-native services but requires developer effort to construct what Logic Apps delivers out of the box with clicks. There are no enterprise SaaS connectors and no visual canvas. It's best suited for GCP-internal automation rather than cross-system enterprise integration.
 
@@ -289,7 +289,7 @@ Azure Functions stands out for its **binding system** — the ability to declara
 
 **AWS SQS + SNS** together replicate Service Bus's combined queue + pub/sub capability, but they are separate services requiring integration. SQS Standard offers nearly unlimited throughput while FIFO queues provide ordering and deduplication guarantees. SNS handles fan-out well. The limitation is that you lose transactional capabilities and some of the richer filtering that Service Bus provides natively. However, SQS's simplicity and tight Lambda integration make it very popular in event-driven AWS architectures.
 
-**GCP Pub/Sub** is elegant in its unified model — a single service handles both queueing and pub/sub through subscriptions. Its throughput is exceptionally high and it shines in streaming/analytics pipelines (tightly integrated with Dataflow, BigQuery). The 10 MB message size limit is a constraint for large payload scenarios. It lacks advanced features like transactions, deferral, and SQL-based filtering.
+**GCP Pub/Sub** is elegant in its unified model; a single service handles both queueing and pub/sub through subscriptions. Its throughput is exceptionally high and it shines in streaming/analytics pipelines (tightly integrated with Dataflow, BigQuery). The 10 MB message size limit is a constraint for large payload scenarios. It lacks advanced features like transactions, deferral, and SQL-based filtering.
 
 **Key takeaway:** Service Bus is the enterprise messaging champion. SQS/SNS wins for AWS-native simplicity and Lambda integration. GCP Pub/Sub is the best choice for high-throughput streaming and analytics pipelines.
 
@@ -348,7 +348,7 @@ Azure Functions stands out for its **binding system** — the ability to declara
 
 ### Narrative Analysis
 
-**Azure Event Grid** is tightly integrated with the Azure resource model — every resource change in Azure can automatically emit an event without any configuration. This makes it the natural reactive backbone for Azure-native architectures. Its advanced filtering (subject, event type, prefix/suffix matching) and support for CloudEvents 1.0 make it interoperable. Event Grid Namespaces (in preview) add MQTT support for IoT scenarios.
+**Azure Event Grid** is tightly integrated with the Azure resource model; every resource change in Azure can automatically emit an event without any configuration. This makes it the natural reactive backbone for Azure-native architectures. Its advanced filtering (subject, event type, prefix/suffix matching) and support for CloudEvents 1.0 make it interoperable. Event Grid Namespaces (in preview) add MQTT support for IoT scenarios.
 
 **AWS EventBridge** is the most powerful of the three, particularly thanks to its Schema Registry with auto-discovery (it can detect event schemas by observing traffic), its 35+ SaaS partner integrations (Salesforce, Zendesk, Shopify), and its Archive & Replay capability. The ability to replay historical events for debugging or reprocessing is a significant operational advantage. EventBridge Pipes (separate service) extends this with point-to-point enrichment pipelines.
 
@@ -430,17 +430,17 @@ Azure Functions stands out for its **binding system** — the ability to declara
 
 | Dimension | Azure | AWS | GCP |
 |---|---|---|---|
-| **Compute (FaaS)** | ✅ Rich bindings; ⚠️ Cold starts | ✅ Most mature; widest trigger set | ✅ Gen 2 on Cloud Run; ⚠️ Fewer triggers |
-| **Orchestration** | ✅ Code-first, developer-friendly | ✅ Visual designer; 200+ SDK integrations | ✅ YAML-clean; ⚠️ Fewer integrations |
-| **Low-code Integration** | ✅ 400+ connectors; B2B/EDI | ⚠️ EventBridge Pipes (limited) | ❌ No native iPaaS; code-heavy |
-| **Messaging (Queues)** | ✅ Transactions, deferral, sessions | ✅ SQS mature; FIFO ordering | ✅ Unified; ⚠️ No transactions |
-| **Event Routing** | ✅ Native Azure resource events | ✅ SaaS partners; archive/replay | ✅ Simple; ⚠️ Fewer SaaS sources |
-| **Streaming / Big Data** | ✅ Kafka-compatible; Capture | ✅ 365-day retention; Firehose | ✅ No-ops auto-scale; BigQuery native |
-| **Pricing Transparency** | ⚠️ Complex (TUs, actions, etc.) | ⚠️ Complex (shards, transitions) | ✅ Simpler volume-based pricing |
-| **Multi-cloud / Open Standards** | ✅ Kafka, CloudEvents, AMQP | ⚠️ Proprietary-leaning | ✅ CloudEvents, gRPC, open standards |
-| **Enterprise / SaaS Connectors** | ✅ SAP, Salesforce, Dynamics (Logic Apps) | ✅ 35+ SaaS (EventBridge) | ⚠️ Limited native SaaS connectors |
-| **Microsoft Ecosystem** | ✅ Best fit | ⚠️ Via Lambda/connectors | ❌ Limited |
-| **Google Ecosystem (BigQuery, etc.)** | ⚠️ Via connectors | ⚠️ Via connectors | ✅ Best fit |
+| **Compute (FaaS)** | Azure Functions : rich trigger/binding system; cold starts on Consumption plan | AWS Lambda : most mature FaaS; widest native trigger set across AWS services | Cloud Functions Gen 2 (built on Cloud Run); fewer native triggers than Lambda |
+| **Orchestration** | Durable Functions : code-first, stateful workflows in C#/Python/JS | AWS Step Functions : visual workflow designer; 200+ SDK integrations | Google Workflows : YAML-based, clean syntax; fewer third-party integrations |
+| **Low-code Integration** | Logic Apps : 400+ connectors including B2B/EDI; no-code designer | EventBridge Pipes : limited point-to-point; no full iPaaS equivalent | No native iPaaS offering; integrations require custom code or third-party tools |
+| **Messaging (Queues)** | Service Bus : supports transactions, message deferral, and sessions | SQS : mature, reliable; supports FIFO ordering but no native transactions | Pub/Sub — unified push/pull model; no native transaction support |
+| **Event Routing** | Event Grid : native Azure resource event routing; custom topics | EventBridge : strong SaaS partner integrations; supports archive and replay | Eventarc : simple routing model; fewer native SaaS event sources |
+| **Streaming / Big Data** | Event Hubs : Kafka-compatible protocol; Capture to Blob/ADLS | Kinesis : up to 365-day retention; Firehose for delivery pipelines | Pub/Sub Lite / Dataflow : auto-scaling, no-ops; native BigQuery integration |
+| **Pricing Transparency** | Complex : billed by Throughput Units, executions, and Logic App actions separately | Complex : billed by shards (Kinesis) and state transitions (Step Functions) | Simpler : volume-based pricing; easier to estimate at scale |
+| **Multi-cloud / Open Standards** | Supports Kafka protocol, CloudEvents, and AMQP | Proprietary-leaning; limited native open standard support | Strong open standards support ; CloudEvents, gRPC, Knative |
+| **Enterprise / SaaS Connectors** | Logic Apps : deep connectors for SAP, Salesforce, Dynamics 365 | EventBridge : 35+ SaaS partners natively supported | Limited native SaaS connectors; relies on custom integrations |
+| **Microsoft Ecosystem Fit** | Native : best fit for Microsoft/Azure-first organizations | Partial : accessible via Lambda and third-party connectors | Weak : limited native Microsoft service support |
+| **Google Ecosystem Fit** | Partial : accessible via connectors | Partial : accessible via connectors | Native : best fit for BigQuery, Vertex AI, and GCP-first organizations |
 
 ---
 
