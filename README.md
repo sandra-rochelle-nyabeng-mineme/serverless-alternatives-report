@@ -1,5 +1,5 @@
 # ☁️ Serverless Service Alternatives Report
-### Azure · AWS · GCP — A Comparative Analysis
+### Azure · AWS · GCP : A Comparative Analysis
 
 > **Course:** Cloud Development and Operations  
 > **Assignment:** Serverless Service Alternatives Report  
