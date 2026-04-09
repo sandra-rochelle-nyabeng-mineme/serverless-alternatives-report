@@ -95,7 +95,7 @@ The goal is to equip cloud practitioners with the knowledge to make informed dec
 | **Per GB-s** | $0.000016 | $0.0000166667 | $0.0000025/GHz-s (CPU-based) |
 | **Premium/Reserved** | Premium plan (always-warm) | Provisioned Concurrency (per instance-hour) | Min instances (per instance-hour) |
 
-### Narrative Analysis
+### Analysis
 
 Azure Functions stands out for its **binding system** — the ability to declaratively wire inputs and outputs to Azure services (Blob Storage, Cosmos DB, Service Bus, etc.) without writing SDK boilerplate is a significant developer productivity advantage. This is unique to Azure and has no direct equivalent in Lambda or Cloud Functions.
 
@@ -157,7 +157,7 @@ Azure Functions stands out for its **binding system** — the ability to declara
 | **Express/Fast** | N/A | $1.00 per 1M state transitions (Express) | $0.01 per 1,000 steps |
 | **Free Tier** | Included in Azure Functions free tier | 4,000 state transitions/month | 5,000 internal steps/month |
 
-### Narrative Analysis
+### Analysis
 
 **Durable Functions** takes a code-first approach that many developers find natural; orchestrations are written as regular async code with `yield`/`await`, hiding the complexity of checkpointing and replay. This is ideal for teams comfortable with programming languages who prefer not to learn a new DSL. The trade-off is limited visual tooling and the need to understand the replay execution model carefully to avoid side effects in orchestrators.
 
@@ -218,7 +218,7 @@ Azure Functions stands out for its **binding system** — the ability to declara
 | **Standard Plan** | From ~$193/month (single-tenant) | N/A | N/A |
 | **Consumption** | ~$0.000025 per action execution | ~$0.40 per 1M events | ~$0.01 per 1,000 steps |
 
-### Narrative Analysis
+### Analysis
 
 **Azure Logic Apps** is the most complete iPaaS (Integration Platform as a Service) offering among the three. Its 400+ connectors and no-code visual designer make it accessible to non-developers, and its B2B/EDI support (AS2, X12, EDIFACT) is unmatched. For enterprise integration scenarios, especially those involving Microsoft products, Logic Apps has no peer. The consumption pricing model can become expensive at scale since every connector action is billed.
 
@@ -283,7 +283,7 @@ Azure Functions stands out for its **binding system** — the ability to declara
 | **Premium** | Fixed hourly (messaging units) | FIFO: $0.50/million | N/A | N/A |
 | **Data Egress** | Included in operations cost | Standard network egress | Standard network egress | Standard network egress |
 
-### Narrative Analysis
+### Analysis
 
 **Azure Service Bus** is the most feature-rich message broker of the three. Its support for transactions, message deferral, scheduled delivery, sessions, and rich SQL-based topic filters makes it the best fit for complex enterprise messaging patterns. The premium tier adds dedicated resources and VNet integration. It is particularly strong for scenarios requiring exactly-once processing semantics and ordered delivery with correlation.
 
@@ -346,7 +346,7 @@ Azure Functions stands out for its **binding system** — the ability to declara
 | **Schema Registry** | Included | $0.10/schema/month | N/A |
 | **Archive & Replay** | Preview pricing | $0.023/GB archived | Via Pub/Sub storage pricing |
 
-### Narrative Analysis
+### Analysis
 
 **Azure Event Grid** is tightly integrated with the Azure resource model; every resource change in Azure can automatically emit an event without any configuration. This makes it the natural reactive backbone for Azure-native architectures. Its advanced filtering (subject, event type, prefix/suffix matching) and support for CloudEvents 1.0 make it interoperable. Event Grid Namespaces (in preview) add MQTT support for IoT scenarios.
 
@@ -412,7 +412,7 @@ Azure Functions stands out for its **binding system** — the ability to declara
 | **Kafka Surface** | Included in Event Hubs price | AWS MSK separate pricing | N/A |
 | **Scaling Model** | Manual TU scaling (or auto-inflate) | Manual shard management or on-demand mode | Fully automatic |
 
-### Narrative Analysis
+### Analysis
 
 **Azure Event Hubs** differentiates itself with **Kafka protocol compatibility** — organizations can point existing Kafka clients at Event Hubs without code changes, making migration dramatically simpler. Its Capture feature automatically archives streams to Azure Blob Storage or Data Lake, enabling a lambda architecture pattern without additional services. At the Premium/Dedicated tier, it supports up to 2000 partitions for very high parallelism.
 
